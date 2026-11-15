@@ -371,8 +371,12 @@ img { max-width: 100%; display: block; }
 ═══════════════════════════════════════════════ */
 .couple-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(min(260px, 100%), 1fr));
+  grid-template-columns: repeat(2, 1fr);
   gap: var(--gap);
+  align-items: start;      /* kedua kartu rata atas */
+}
+@media (max-width: 768px) {
+  .couple-grid { grid-template-columns: 1fr; }
 }
 
 /* 3D tilt card */
@@ -386,6 +390,8 @@ img { max-width: 100%; display: block; }
   transition: border-color 0.5s, box-shadow 0.5s;
   transform-style: preserve-3d;
   will-change: transform;
+  vertical-align: top;      /* pastikan tidak geser vertikal */
+  margin-top: 0 !important; /* tidak ada margin atas berbeda */
 }
 .couple-card:hover {
   border-color: var(--border-h);
@@ -884,7 +890,7 @@ img { max-width: 100%; display: block; }
           <!-- Solo portrait of Najla (mempelai wanita) -->
           <img id="photo-najla" loading="lazy"
             src="https://digitainvite.id/wp-content/uploads/2026/09/uw20260918325_ab4135b8bb25a1167d8d86b9b7a1ba72-3NfQI8-scaled.webp"
-            style="object-fit: cover; object-position: center 12%; transform: scale(1.4); transform-origin: center 22%;"
+            style="object-fit: cover; object-position: center 32%; transform: scale(1.4); transform-origin: center 50%;"
             alt="Najla Ardya Kamila">
           </div>
         </div>
@@ -899,13 +905,13 @@ img { max-width: 100%; display: block; }
       </div>
 
       <!-- GROOM — Chandra -->
-      <div class="couple-card rv from-right d2" id="card-chandra">
+      <div class="couple-card rv from-right d1" id="card-chandra">
         <div class="photo-wrap">
           <div class="photo-frame">
           <!-- Solo portrait of Chandra (mempelai pria) -->
           <img id="photo-chandra" loading="lazy"
             src="https://digitainvite.id/wp-content/uploads/2026/09/uw20260918325_bd781a647f8ef2d5c15d6774b9dbb10f-eWZhY0-scaled.webp"
-            style="object-position: center 5%;"
+            style="object-fit: cover; object-position: center 28%;"
             alt="Briptu Chandra Dul Fitra">
           </div>
         </div>
@@ -998,7 +1004,7 @@ img { max-width: 100%; display: block; }
         <div class="gi-ov">🔍</div>
       </div>
       <div class="gi rv d4" onclick="openLb(6)">
-        <img loading="lazy" style="object-position: center 5%;" src="https://digitainvite.id/wp-content/uploads/2026/10/uw20260918325_66523c6b5538fe23f3a9c5f624b0fb02-pT8zLO-scaled.webp" alt="Gallery 7">
+        <img loading="lazy" style="object-fit: cover; object-position: center 28%;" src="https://digitainvite.id/wp-content/uploads/2026/10/uw20260918325_66523c6b5538fe23f3a9c5f624b0fb02-pT8zLO-scaled.webp" alt="Gallery 7">
         <div class="gi-ov">🔍</div>
       </div>
     </div>
