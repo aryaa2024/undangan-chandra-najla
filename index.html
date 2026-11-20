@@ -597,51 +597,59 @@ img { max-width: 100%; display: block; }
   padding: 0.25rem 0.75rem; margin-bottom: 1rem;
 }
 
+/* ═══════════════════════════════════════════════
+   PHOTO FRAME — Mewah Portrait Style (no spinning ring)
+═══════════════════════════════════════════════ */
 .photo-wrap {
-  width: clamp(150px, 28vw, 185px);
-  height: clamp(185px, 36vw, 240px);
-  margin: 0 auto clamp(1.2rem,3vw,1.8rem);
+  width: clamp(140px, 26vw, 175px);
+  height: clamp(175px, 34vw, 230px);
+  margin: 0 auto clamp(1.4rem,3vw,2rem);
   position: relative;
-  border-radius: 50% / 45%;
 }
+/* Outer gold glow shadow — no spinning */
 .photo-wrap::before {
   content: '';
-  position: absolute; inset: -6px;
-  border-radius: inherit;
-  background: conic-gradient(
-    from 0deg,
-    var(--gold-lt) 0deg, transparent 85deg,
-    var(--gold) 180deg, transparent 265deg,
-    var(--gold-lt) 360deg
-  );
-  animation: ringRotate 8s linear infinite;
+  position: absolute; inset: -5px;
+  background: linear-gradient(135deg,
+    var(--gold-lt) 0%, rgba(184,144,10,0.2) 40%,
+    var(--maroon) 60%, rgba(184,144,10,0.2) 80%,
+    var(--gold-lt) 100%);
+  border-radius: 2px;
   pointer-events: none; z-index: 0;
-  opacity: 0.75;
+  box-shadow:
+    0 0 0 1px rgba(184,144,10,0.6),
+    0 8px 32px rgba(184,144,10,0.25),
+    0 2px 8px rgba(122,28,46,0.2);
 }
+/* Inner border line */
 .photo-wrap::after {
   content: '';
-  position: absolute; inset: -2px;
-  border-radius: inherit;
-  border: 1.5px solid rgba(184,144,10,0.5);
-  box-shadow: 0 0 20px rgba(184,144,10,0.15);
-  pointer-events: none; z-index: 3;
+  position: absolute; inset: 3px;
+  border: 1px solid rgba(255,245,214,0.5);
+  pointer-events: none; z-index: 4;
+  border-radius: 1px;
 }
 .photo-frame {
   width: 100%; height: 100%;
   position: relative; z-index: 1;
-  border-radius: inherit;
+  border-radius: 2px;
   overflow: hidden;
-  border: 2px solid rgba(184,144,10,0.4);
 }
-@keyframes ringRotate { to { transform: rotate(360deg); } }
 .photo-frame img {
   width: 100%; height: 100%;
   object-fit: cover;
   object-position: center 15%;
   display: block;
-  transition: transform 0.6s ease;
+  transition: transform 0.7s ease;
 }
-.couple-card:hover .photo-frame img { transform: scale(1.06); }
+.couple-card:hover .photo-frame img { transform: scale(1.05); }
+
+/* Corner accents on photo frame */
+.photo-wrap .pc { position: absolute; z-index: 5; width: 16px; height: 16px; border-color: var(--gold-lt); border-style: solid; }
+.photo-wrap .pc.tl { top: -1px; left: -1px; border-width: 2px 0 0 2px; }
+.photo-wrap .pc.tr { top: -1px; right: -1px; border-width: 2px 2px 0 0; }
+.photo-wrap .pc.bl { bottom: -1px; left: -1px; border-width: 0 0 2px 2px; }
+.photo-wrap .pc.br { bottom: -1px; right: -1px; border-width: 0 2px 2px 0; }
 
 .cp-role { font-size: var(--sz-xs); letter-spacing: 0.45em; text-transform: uppercase; color: var(--sage); margin-bottom: 0.4rem; }
 .cp-name {
@@ -1172,16 +1180,6 @@ img { max-width: 100%; display: block; }
 .cp-role     { color: var(--maroon); }
 .card-badge  { background: var(--maroon); }
 .couple-amp  { color: var(--maroon); text-shadow: 0 0 40px rgba(122,28,46,0.3); }
-/* Spinning ring override — maroon+gold Javanese */
-.photo-wrap::before {
-  background: conic-gradient(
-    from 0deg,
-    var(--gold-lt) 0deg, transparent 85deg,
-    var(--maroon-lt) 180deg, transparent 265deg,
-    var(--gold-lt) 360deg
-  );
-}
-.photo-wrap::after { border-color: rgba(184,144,10,0.6); }
 
 /* History section */
 #history { background: linear-gradient(180deg, #f0e6d2 0%, #e8d9c0 100%); }
@@ -1297,9 +1295,9 @@ img { max-width: 100%; display: block; }
 <!-- Particle canvas -->
 <canvas id="cvs"></canvas>
 
-<!-- Audio -->
+<!-- Audio — Kebogiro Penganten -->
 <audio id="aud" loop>
-  <!-- <source src="music.mp3" type="audio/mpeg"> -->
+  <source src="Kebogiro Penganten.mp3" type="audio/mpeg">
 </audio>
 
 <!-- ══════════════ COVER ══════════════ -->
@@ -1427,10 +1425,12 @@ img { max-width: 100%; display: block; }
       <div class="couple-card rv from-left d1" id="card-chandra">
         <div class="card-badge">Pihak Pengundang</div>
         <div class="photo-wrap">
+          <div class="pc tl"></div><div class="pc tr"></div>
+          <div class="pc bl"></div><div class="pc br"></div>
           <div class="photo-frame">
             <img id="photo-chandra" loading="lazy"
-              src="chandra-solo.jpg"
-              style="object-fit: cover; object-position: center 12%; width:100%; height:100%;"
+              src="https://digitainvite.id/wp-content/uploads/2026/09/uw20260918325_bd781a647f8ef2d5c15d6774b9dbb10f-eWZhY0-scaled.webp"
+              style="object-fit:cover; object-position: center 20%;"
               alt="Briptu Chandra Dul Fitra">
           </div>
         </div>
@@ -1447,10 +1447,12 @@ img { max-width: 100%; display: block; }
       <!-- BRIDE — Najla -->
       <div class="couple-card rv from-right d1" id="card-najla">
         <div class="photo-wrap">
+          <div class="pc tl"></div><div class="pc tr"></div>
+          <div class="pc bl"></div><div class="pc br"></div>
           <div class="photo-frame">
             <img id="photo-najla" loading="lazy"
-              src="najla-solo.jpg"
-              style="object-fit: cover; object-position: center 15%; width:100%; height:100%;"
+              src="https://digitainvite.id/wp-content/uploads/2026/09/uw20260918325_ab4135b8bb25a1167d8d86b9b7a1ba72-3NfQI8-scaled.webp"
+              style="object-fit:cover; object-position: center 28%;"
               alt="Najla Ardya Kamila">
           </div>
         </div>
