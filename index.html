@@ -9,7 +9,7 @@
 <title>Resepsi Ngunduh Mantu — Chandra &amp; Najla</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=Great+Vibes&family=Montserrat:wght@200;300;400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=Great+Vibes&family=Montserrat:wght@200;300;400;500&family=Noto+Serif+Javanese&display=swap" rel="stylesheet">
 <style>
 /* ═══════════════════════════════════════════════
    ROOT & RESET
@@ -17,26 +17,29 @@
 *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
 
 :root {
-  /* Light elegant palette */
-  --cream:      #f7f2ea;
-  --ivory:      #fdf8f0;
-  --ivory2:     #faf5eb;
-  --cream-dk:   #ede5d4;
-  --gold:       #b08b4a;
-  --gold-lt:    #d4a85a;
-  --gold-dk:    #8a6830;
-  --gold-pale:  rgba(176,139,74,0.10);
-  --sage:       #7a9e7e;
-  --sage-lt:    #a8c5aa;
-  --sage-pale:  rgba(122,158,126,0.12);
-  --warm-brown: #5c4033;
-  --text-main:  #3a2e24;
-  --text-muted: rgba(58,46,36,0.55);
-  --border:     rgba(176,139,74,0.22);
-  --border-h:   rgba(176,139,74,0.55);
-  --card:       rgba(255,255,255,0.72);
-  --card-h:     rgba(255,255,255,0.9);
-  --white:      #ffffff;
+  /* Javanese Wedding Palette */
+  --cream:      #f7f2e6;
+  --ivory:      #fdf7ee;
+  --ivory2:     #faf4e8;
+  --cream-dk:   #ede0c8;
+  --gold:       #b8900a;
+  --gold-lt:    #d4aa30;
+  --gold-dk:    #8a6500;
+  --gold-pale:  rgba(184,144,10,0.10);
+  --maroon:     #7a1c2e;
+  --maroon-lt:  #a83248;
+  --maroon-pale:rgba(122,28,46,0.10);
+  --sage:       #7a6830;
+  --sage-lt:    #b09040;
+  --sage-pale:  rgba(122,104,48,0.12);
+  --warm-brown: #4a2e1a;
+  --text-main:  #2e1e10;
+  --text-muted: rgba(46,30,16,0.55);
+  --border:     rgba(184,144,10,0.25);
+  --border-h:   rgba(184,144,10,0.6);
+  --card:       rgba(255,251,240,0.85);
+  --card-h:     rgba(255,251,240,0.95);
+  --white:      #fffdf5;
 
   --sz-xs:   clamp(0.56rem, 1.5vw, 0.65rem);
   --sz-sm:   clamp(0.78rem, 2vw, 0.88rem);
@@ -70,12 +73,150 @@ img { max-width: 100%; display: block; }
 ::-webkit-scrollbar-thumb { background: var(--gold-dk); border-radius: 2px; }
 
 /* ═══════════════════════════════════════════════
+   JAVANESE ORNAMENTAL PATTERNS
+═══════════════════════════════════════════════ */
+/* Batik parang-inspired SVG background */
+.batik-bg {
+  background-color: var(--ivory);
+  background-image:
+    repeating-linear-gradient(
+      45deg,
+      rgba(184,144,10,0.04) 0px, rgba(184,144,10,0.04) 1px,
+      transparent 1px, transparent 20px
+    ),
+    repeating-linear-gradient(
+      -45deg,
+      rgba(122,28,46,0.03) 0px, rgba(122,28,46,0.03) 1px,
+      transparent 1px, transparent 20px
+    );
+}
+
+/* Kawung pattern overlay */
+.kawung-bg {
+  background-color: var(--cream-dk);
+  background-image: radial-gradient(
+    circle at 25% 25%, rgba(184,144,10,0.08) 10%, transparent 11%
+  ), radial-gradient(
+    circle at 75% 25%, rgba(184,144,10,0.08) 10%, transparent 11%
+  ), radial-gradient(
+    circle at 25% 75%, rgba(184,144,10,0.08) 10%, transparent 11%
+  ), radial-gradient(
+    circle at 75% 75%, rgba(184,144,10,0.08) 10%, transparent 11%
+  ), radial-gradient(
+    circle at 50% 50%, rgba(122,28,46,0.06) 14%, transparent 15%
+  );
+  background-size: 40px 40px;
+}
+
+/* Truntum / floral repeat */
+.truntum-bg {
+  background-color: var(--ivory2);
+  background-image:
+    radial-gradient(ellipse at center, rgba(184,144,10,0.07) 0%, transparent 60%),
+    repeating-radial-gradient(
+      ellipse at 50% 50%,
+      transparent 0px, transparent 18px,
+      rgba(184,144,10,0.04) 18px, rgba(184,144,10,0.04) 19px
+    );
+}
+
+/* Top ornamental border — ukiran style */
+.jawa-border-top {
+  position: relative;
+}
+.jawa-border-top::before {
+  content: '';
+  position: absolute; top: 0; left: 0; right: 0;
+  height: 4px;
+  background: linear-gradient(90deg,
+    transparent 0%,
+    var(--maroon) 15%,
+    var(--gold-lt) 35%,
+    var(--gold) 50%,
+    var(--gold-lt) 65%,
+    var(--maroon) 85%,
+    transparent 100%
+  );
+}
+
+/* Bottom ornamental border */
+.jawa-border-bot {
+  position: relative;
+}
+.jawa-border-bot::after {
+  content: '';
+  position: absolute; bottom: 0; left: 0; right: 0;
+  height: 4px;
+  background: linear-gradient(90deg,
+    transparent 0%,
+    var(--maroon) 15%,
+    var(--gold-lt) 35%,
+    var(--gold) 50%,
+    var(--gold-lt) 65%,
+    var(--maroon) 85%,
+    transparent 100%
+  );
+}
+
+/* Parang diagonal stripe accent */
+.parang-accent {
+  position: relative; overflow: hidden;
+}
+.parang-accent::before {
+  content: '';
+  position: absolute; inset: 0; pointer-events: none;
+  background: repeating-linear-gradient(
+    135deg,
+    transparent,
+    transparent 28px,
+    rgba(184,144,10,0.035) 28px,
+    rgba(184,144,10,0.035) 30px
+  );
+}
+
+/* Javanese gold divider line with center diamond */
+.jawa-div {
+  display: flex; align-items: center; justify-content: center;
+  gap: 0.6rem; margin: 1.5rem auto;
+}
+.jawa-div::before, .jawa-div::after {
+  content: '';
+  flex: 1; max-width: 120px; height: 1px;
+  background: linear-gradient(90deg, transparent, var(--maroon), var(--gold), var(--maroon), transparent);
+}
+.jawa-div-center {
+  display: flex; gap: 0.3rem; align-items: center;
+}
+.jawa-dmnd { width: 7px; height: 7px; background: var(--gold); transform: rotate(45deg); }
+.jawa-dmnd-sm { width: 4px; height: 4px; background: var(--maroon); transform: rotate(45deg); }
+
+/* Javanese script / motif label */
+.jawa-label {
+  font-size: 0.6rem; letter-spacing: 0.5em; text-transform: uppercase;
+  color: var(--maroon); text-align: center; margin-bottom: 0.3rem;
+  font-weight: 500;
+}
+
+/* Ukiran corner decorations */
+.ukiran-corner {
+  position: absolute;
+  width: clamp(28px, 5vw, 44px); height: clamp(28px, 5vw, 44px);
+  pointer-events: none;
+}
+.ukiran-corner svg { width: 100%; height: 100%; }
+.ukiran-corner.tl { top: 6px; left: 6px; }
+.ukiran-corner.tr { top: 6px; right: 6px; transform: scaleX(-1); }
+.ukiran-corner.bl { bottom: 6px; left: 6px; transform: scaleY(-1); }
+.ukiran-corner.br { bottom: 6px; right: 6px; transform: scale(-1); }
+
+
+/* ═══════════════════════════════════════════════
    PROGRESS BAR
 ═══════════════════════════════════════════════ */
 #prog {
   position: fixed; top: 0; left: 0;
-  height: 2.5px; width: 0%;
-  background: linear-gradient(90deg, var(--gold-dk), var(--gold-lt), var(--sage));
+  height: 3px; width: 0%;
+  background: linear-gradient(90deg, var(--maroon), var(--gold-lt), var(--maroon));
   z-index: 600;
   transition: width 0.08s linear;
 }
@@ -257,16 +398,17 @@ img { max-width: 100%; display: block; }
 }
 .hero-sup {
   font-size: var(--sz-xs); letter-spacing: 0.6em;
-  text-transform: uppercase; color: var(--sage);
+  text-transform: uppercase; color: var(--gold-lt);
   margin-bottom: 0.6rem;
   animation: fadeUp 0.8s ease 0.2s both;
+  text-shadow: 0 1px 8px rgba(0,0,0,0.3);
 }
 .hero-title {
   font-family: 'Great Vibes', cursive;
   font-size: clamp(3.5rem, 12vw, 7.5rem);
   line-height: 1.08;
-  color: var(--warm-brown);
-  text-shadow: 0 4px 30px rgba(176,139,74,0.15);
+  color: #fff8e8;
+  text-shadow: 0 4px 30px rgba(0,0,0,0.4), 0 0 60px rgba(184,144,10,0.3);
 }
 .hero-title .char {
   display: inline-block;
@@ -940,6 +1082,198 @@ img { max-width: 100%; display: block; }
     padding-bottom: max(0px, env(safe-area-inset-bottom));
   }
 }
+/* ═══════════════════════════════════════════════
+   JAVANESE THEME OVERRIDES
+═══════════════════════════════════════════════ */
+
+/* Cover — batik maroon feel */
+#cover {
+  background: linear-gradient(160deg, #1a0a04 0%, #2e1008 40%, #1a0a04 100%);
+}
+#cover::before {
+  background:
+    radial-gradient(ellipse at 20% 70%, rgba(184,144,10,0.15) 0%, transparent 50%),
+    radial-gradient(ellipse at 80% 20%, rgba(122,28,46,0.12) 0%, transparent 50%),
+    radial-gradient(ellipse at 50% 100%, rgba(184,144,10,0.10) 0%, transparent 40%);
+}
+/* Batik diagonal lines on cover */
+#cover::after {
+  content: '';
+  position: absolute; inset: 0; pointer-events: none;
+  background: repeating-linear-gradient(
+    135deg,
+    transparent, transparent 30px,
+    rgba(184,144,10,0.025) 30px, rgba(184,144,10,0.025) 32px
+  );
+}
+.cvr-frame { border-color: rgba(184,144,10,0.35); }
+.cco { border-color: var(--gold-lt); }
+.cvr-event { color: var(--gold-lt); letter-spacing: 0.5em; }
+.cvr-name  { color: #fff5d6; text-shadow: 0 2px 30px rgba(184,144,10,0.4); }
+.cvr-amp   { color: var(--gold-lt); }
+.cvr-to    { color: var(--gold-lt); }
+.cvr-guest { color: rgba(255,245,214,0.85); }
+.cvr-date  { color: rgba(255,245,214,0.55); }
+.btn-open  { border-color: var(--gold-lt); color: var(--gold-lt); }
+.btn-open:hover { color: #1a0a04; }
+.btn-open::before { background: var(--gold-lt); }
+.cvr-orn::before, .cvr-orn::after { background: rgba(184,144,10,0.4); }
+.dmnd { background: var(--gold-lt); }
+
+/* Hero light overlay — keep image visible */
+.hero-bg::after {
+  background: linear-gradient(to bottom,
+    rgba(26,10,4,0.2)   0%,
+    rgba(26,10,4,0.0)   25%,
+    rgba(26,10,4,0.5)   65%,
+    rgba(26,10,4,0.95)  100%
+  );
+}
+.scroll-cue span { color: var(--gold-lt); }
+.scroll-line { background: linear-gradient(to bottom, var(--gold-lt), transparent); }
+
+/* Greeting section — maroon batik */
+#greeting {
+  background: linear-gradient(180deg, #2a0e08 0%, #1e0a05 100%);
+  border-top: 3px solid;
+  border-image: linear-gradient(90deg, transparent, var(--gold-lt), transparent) 1;
+}
+#greeting::before {
+  content: 'ꦧꦱ꧀ꦩꦭ꧀ꦭꦃ';
+  font-family: 'Noto Serif Javanese', serif;
+  position: absolute; top: 50%; left: 50%; transform: translate(-50%,-50%);
+  font-size: clamp(5rem,15vw,12rem);
+  color: rgba(184,144,10,0.06); pointer-events: none; white-space: nowrap;
+}
+.gr-basmallah { color: var(--gold-lt); }
+.gr-salam     { color: #fff5d6; }
+.gr-txt       { color: rgba(255,245,214,0.65); }
+#greeting .sec-lbl { color: var(--gold-lt); }
+#greeting .jawa-label { color: rgba(255,245,214,0.5); }
+
+/* Quote section */
+#quote {
+  background: linear-gradient(180deg, #f5ede0 0%, #ecdcc5 100%);
+  border-top: 3px solid;
+  border-image: linear-gradient(90deg, transparent, var(--maroon), transparent) 1;
+  border-bottom: 3px solid;
+}
+.q-txt  { color: var(--warm-brown); }
+.q-txt::before, .q-txt::after { color: var(--maroon); }
+.q-src  { color: var(--maroon); }
+#quote .sec-lbl { color: var(--maroon); }
+
+/* Couple section */
+#couple { background: var(--ivory2); }
+.couple-card { border-color: rgba(184,144,10,0.3); }
+.cp-role     { color: var(--maroon); }
+.card-badge  { background: var(--maroon); }
+.couple-amp  { color: var(--maroon); text-shadow: 0 0 40px rgba(122,28,46,0.3); }
+
+/* History section */
+#history { background: linear-gradient(180deg, #f0e6d2 0%, #e8d9c0 100%); }
+.hist-info { border-left-color: var(--maroon); }
+.hist-ttl  { color: var(--warm-brown); }
+.hist-tag  { color: var(--maroon); border-color: rgba(122,28,46,0.4); }
+.hist-sep  { background: linear-gradient(90deg,transparent,var(--maroon),transparent); }
+
+/* Countdown section */
+#countdown { background: linear-gradient(180deg, #2a0e08 0%, #1e0a05 100%); }
+#countdown .sec-lbl { color: var(--gold-lt); }
+#countdown .sec-ttl { color: #fff5d6; }
+.cd-label { color: var(--gold-lt); }
+.cd-unit  { background: rgba(184,144,10,0.08); border-color: rgba(184,144,10,0.3); }
+.cd-unit::before, .cd-unit::after { border-color: var(--gold-lt); }
+.cd-num   { color: #fff5d6; }
+.cd-lbl   { color: rgba(255,245,214,0.55); }
+#countdown .jawa-div::before, #countdown .jawa-div::after {
+  background: linear-gradient(90deg, transparent, var(--gold-lt), transparent);
+}
+#countdown .jawa-dmnd { background: var(--gold-lt); }
+#countdown .jawa-dmnd-sm { background: rgba(255,245,214,0.5); }
+
+/* Event section */
+#event { background: linear-gradient(180deg, #f0e6d2 0%, #e8d9c0 100%); }
+.ev-type { color: var(--maroon); }
+.ev-name { color: var(--warm-brown); }
+.ev-row-lbl { color: var(--maroon); }
+.ev-sep { background: linear-gradient(90deg,transparent,var(--maroon),transparent); }
+.btn-maps { border-color: var(--maroon); color: var(--maroon); }
+.btn-maps:hover { background: var(--maroon); color: #fff; }
+.ev-card::before, .ev-card::after { border-color: var(--gold-dk); }
+
+/* Gallery section — featured family photo */
+#gallery { background: linear-gradient(180deg, #2a0e08 0%, #1e0a05 100%); }
+#gallery .sec-lbl   { color: var(--gold-lt); }
+#gallery .sec-ttl   { color: #fff5d6; }
+#gallery .gal-quote { color: rgba(255,245,214,0.55); }
+#gallery .jawa-label { color: rgba(255,245,214,0.5); }
+#gallery .jawa-dmnd  { background: var(--gold-lt); }
+#gallery .jawa-dmnd-sm { background: rgba(255,245,214,0.4); }
+#gallery .jawa-div::before, #gallery .jawa-div::after {
+  background: linear-gradient(90deg, transparent, var(--gold-lt), transparent);
+}
+
+/* Featured gallery item — full width banner */
+.gi-featured {
+  grid-column: 1 / -1;
+  aspect-ratio: 16/7 !important;
+}
+.gi-featured img {
+  object-position: center 35% !important;
+}
+.gi-caption {
+  position: absolute; bottom: 0; left: 0; right: 0;
+  background: linear-gradient(to top, rgba(26,10,4,0.75), transparent);
+  color: #fff5d6; padding: 0.8rem 1rem 0.6rem;
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(0.8rem,2vw,1rem); font-style: italic;
+  letter-spacing: 0.15em; text-align: center;
+  opacity: 0; transition: opacity 0.4s;
+}
+.gi-featured .gi-caption { opacity: 1; }
+
+/* Wishes section */
+#wishes { background: linear-gradient(180deg, #f0e6d2 0%, #e8d9c0 100%); }
+#wishes .sec-lbl { color: var(--maroon); }
+#wishes .sec-ttl { color: var(--warm-brown); }
+.wi, .ws, .wt    { background: rgba(255,251,240,0.9); border-color: rgba(184,144,10,0.3); color: var(--text-main); }
+.wi:focus, .ws:focus, .wt:focus { border-color: var(--maroon); }
+.btn-send { border-color: var(--maroon); color: var(--maroon); }
+.btn-send::before { background: var(--maroon); }
+.w-nm { color: var(--maroon); }
+.w-st { color: var(--gold-dk); }
+
+/* Closing section */
+#closing { background: linear-gradient(180deg, #2a0e08 0%, #12050205 100%); }
+#closing::before { background: linear-gradient(90deg,transparent,var(--gold-lt),transparent); }
+.cl-msg    { color: rgba(255,245,214,0.65); }
+.cl-names  { color: #fff5d6; text-shadow: 0 0 40px rgba(184,144,10,0.3); }
+.cl-sep    { background: linear-gradient(90deg,transparent,var(--gold-lt),transparent); }
+.cl-family { color: rgba(255,245,214,0.6); }
+.cl-family strong { color: #fff5d6; }
+.cl-tag    { color: var(--gold-lt); }
+.cl-cred   { color: rgba(255,245,214,0.2); }
+#closing .sec-lbl { color: var(--gold-lt); }
+
+/* Nav dots maroon/gold */
+.nd     { background: rgba(184,144,10,0.2); border-color: rgba(184,144,10,0.5); }
+.nd.on  { background: var(--gold-lt); }
+
+/* Music button */
+#mb { background: rgba(26,10,4,0.85); border-color: rgba(184,144,10,0.4); color: var(--gold-lt); }
+.mp1 { border-color: rgba(184,144,10,0.4); }
+.mp2 { border-color: rgba(184,144,10,0.15); }
+
+/* Shared section labels override */
+.sec-lbl { color: var(--maroon); }
+.sec-orn::before { background: linear-gradient(90deg, transparent, var(--maroon)); }
+.sec-orn::after  { background: linear-gradient(90deg, var(--maroon), transparent); }
+
+/* Scrollbar */
+::-webkit-scrollbar-track { background: #1a0a04; }
+::-webkit-scrollbar-thumb { background: var(--gold-dk); }
+
 </style>
 </head>
 <body>
@@ -961,18 +1295,52 @@ img { max-width: 100%; display: block; }
   <div class="cco tl"></div><div class="cco tr"></div>
   <div class="cco bl"></div><div class="cco br"></div>
 
+  <!-- Javanese ukiran SVG corners -->
+  <div class="ukiran-corner tl">
+    <svg viewBox="0 0 44 44" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M2 2 Q22 2 42 22" stroke="rgba(212,168,48,0.5)" stroke-width="1.5" fill="none"/>
+      <path d="M2 2 Q2 22 22 42" stroke="rgba(212,168,48,0.5)" stroke-width="1.5" fill="none"/>
+      <circle cx="2" cy="2" r="2" fill="rgba(212,168,48,0.6)"/>
+      <circle cx="22" cy="22" r="1.5" fill="rgba(212,168,48,0.4)"/>
+    </svg>
+  </div>
+  <div class="ukiran-corner tr">
+    <svg viewBox="0 0 44 44" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M2 2 Q22 2 42 22" stroke="rgba(212,168,48,0.5)" stroke-width="1.5" fill="none"/>
+      <path d="M2 2 Q2 22 22 42" stroke="rgba(212,168,48,0.5)" stroke-width="1.5" fill="none"/>
+      <circle cx="2" cy="2" r="2" fill="rgba(212,168,48,0.6)"/>
+      <circle cx="22" cy="22" r="1.5" fill="rgba(212,168,48,0.4)"/>
+    </svg>
+  </div>
+  <div class="ukiran-corner bl">
+    <svg viewBox="0 0 44 44" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M2 2 Q22 2 42 22" stroke="rgba(212,168,48,0.5)" stroke-width="1.5" fill="none"/>
+      <path d="M2 2 Q2 22 22 42" stroke="rgba(212,168,48,0.5)" stroke-width="1.5" fill="none"/>
+      <circle cx="2" cy="2" r="2" fill="rgba(212,168,48,0.6)"/>
+      <circle cx="22" cy="22" r="1.5" fill="rgba(212,168,48,0.4)"/>
+    </svg>
+  </div>
+  <div class="ukiran-corner br">
+    <svg viewBox="0 0 44 44" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M2 2 Q22 2 42 22" stroke="rgba(212,168,48,0.5)" stroke-width="1.5" fill="none"/>
+      <path d="M2 2 Q2 22 22 42" stroke="rgba(212,168,48,0.5)" stroke-width="1.5" fill="none"/>
+      <circle cx="2" cy="2" r="2" fill="rgba(212,168,48,0.6)"/>
+      <circle cx="22" cy="22" r="1.5" fill="rgba(212,168,48,0.4)"/>
+    </svg>
+  </div>
+
   <div class="cvr-body">
     <div class="cvr-to">Kepada Yth.</div>
     <div class="cvr-guest" id="cvr-guest">Tamu Undangan</div>
     <div class="cvr-rule"></div>
-    <div class="cvr-event">Resepsi Ngunduh Mantu</div>
+    <div class="cvr-event">✦ Resepsi Ngunduh Mantu ✦</div>
     <div class="cvr-name">
       Chandra
       <span class="cvr-amp">&amp;</span>
       Najla
     </div>
     <div class="cvr-orn"><div class="dmnd"></div></div>
-    <div class="cvr-date">Sabtu, 9 Januari 2027 · Depok</div>
+    <div class="cvr-date">Sabtu, 9 Januari 2027 · Depok, Jawa Barat</div>
     <button class="btn-open" onclick="openInv()">✦ &nbsp;Buka Undangan&nbsp; ✦</button>
   </div>
 </div>
@@ -1001,8 +1369,15 @@ img { max-width: 100%; display: block; }
   <!-- GREETING / PEMBUKA -->
   <div id="greeting" data-sec="1">
     <div class="gr-box rv">
+      <div class="jawa-label">ꦱꦸꦒꦼꦁ ꦫꦲꦪꦸ</div>
       <div class="sec-lbl">Undangan</div>
-      <div class="sec-orn"><div class="dmnd"></div></div>
+      <div class="jawa-div">
+        <div class="jawa-div-center">
+          <div class="jawa-dmnd-sm"></div>
+          <div class="jawa-dmnd"></div>
+          <div class="jawa-dmnd-sm"></div>
+        </div>
+      </div>
       <div class="gr-basmallah">بِسْمِ اللَّهِ الرَّحْمَنِ الرَّحِيمِ</div>
       <div class="gr-salam">Assalamu'alaikum Warahmatullahi Wabarakatuh</div>
       <div class="gr-txt">
@@ -1041,8 +1416,8 @@ img { max-width: 100%; display: block; }
         <div class="photo-wrap">
           <div class="photo-frame">
             <img id="photo-chandra" loading="lazy"
-              src="https://digitainvite.id/wp-content/uploads/2026/09/uw20260918325_bd781a647f8ef2d5c15d6774b9dbb10f-eWZhY0-scaled.webp"
-              style="object-fit: cover; object-position: center 28%;"
+              src="chandra-solo.jpg"
+              style="object-fit: cover; object-position: center 20%;"
               alt="Briptu Chandra Dul Fitra">
           </div>
         </div>
@@ -1061,8 +1436,8 @@ img { max-width: 100%; display: block; }
         <div class="photo-wrap">
           <div class="photo-frame">
             <img id="photo-najla" loading="lazy"
-              src="https://digitainvite.id/wp-content/uploads/2026/09/uw20260918325_ab4135b8bb25a1167d8d86b9b7a1ba72-3NfQI8-scaled.webp"
-              style="object-fit: cover; object-position: center 32%; transform: scale(1.4); transform-origin: center 50%;"
+              src="najla-solo.jpg"
+              style="object-fit: cover; object-position: center 25%; transform: scale(1.15); transform-origin: center 40%;"
               alt="Najla Ardya Kamila">
           </div>
         </div>
@@ -1106,11 +1481,18 @@ img { max-width: 100%; display: block; }
   <!-- COUNTDOWN -->
   <div id="countdown" data-sec="5">
     <div class="rv">
-      <div class="sec-lbl">Hitung Mundur</div>
-      <div class="sec-ttl">Menuju Hari Bahagia</div>
-      <div class="sec-orn"><div class="dmnd"></div></div>
+      <div class="jawa-label">✦ Hitung Mundur ✦</div>
+      <div class="sec-lbl">Menuju Hari Bahagia</div>
+      <div class="sec-ttl">9 Januari 2027</div>
+      <div class="jawa-div rv">
+        <div class="jawa-div-center">
+          <div class="jawa-dmnd-sm"></div>
+          <div class="jawa-dmnd"></div>
+          <div class="jawa-dmnd-sm"></div>
+        </div>
+      </div>
     </div>
-    <div class="cd-label rv d1">Resepsi Ngunduh Mantu · Sabtu, 9 Januari 2027</div>
+    <div class="cd-label rv d1">Resepsi Ngunduh Mantu · Pukul 10.00 WIB</div>
     <div class="cd-grid rv d2" id="cd-grid">
       <div class="cd-unit">
         <span class="cd-num" id="cd-d">00</span>
@@ -1189,38 +1571,46 @@ img { max-width: 100%; display: block; }
   <!-- GALLERY -->
   <section class="sec" id="gallery" data-sec="7">
     <div class="rv">
+      <div class="jawa-label">✦ Kenangan Indah ✦</div>
       <div class="sec-lbl">Galeri Foto</div>
-      <div class="sec-ttl">Momen Bahagia Bersama</div>
-      <div class="sec-orn"><div class="dmnd"></div></div>
-      <div class="gal-quote">"Setiap momen adalah kenangan indah yang abadi."</div>
+      <div class="sec-ttl">Momen Bahagia Bersama Keluarga</div>
+      <div class="jawa-div rv">
+        <div class="jawa-div-center">
+          <div class="jawa-dmnd-sm"></div>
+          <div class="jawa-dmnd"></div>
+          <div class="jawa-dmnd-sm"></div>
+        </div>
+      </div>
+      <div class="gal-quote">"Keluarga adalah mahkota terindah dalam setiap perayaan."</div>
     </div>
     <div class="gal-grid">
-      <div class="gi rv d1" onclick="openLb(0)">
-        <img loading="lazy" src="https://digitainvite.id/wp-content/uploads/2026/09/uw20260918325_022bc102c97cc137d414d55a43b276ae-uS26gB-scaled.webp" alt="Foto Pernikahan 1">
+      <!-- Foto keluarga besar — bintang utama galeri (full width) -->
+      <div class="gi rv d1 gi-featured" onclick="openLb(0)">
+        <img loading="lazy" src="foto-keluarga.jpg"
+          style="object-fit: cover; object-position: center 30%;"
+          alt="Foto Keluarga Besar Chandra & Najla">
         <div class="gi-ov">🔍</div>
+        <div class="gi-caption">Foto Bersama Keluarga</div>
       </div>
+      <!-- Foto pernikahan / resepsi -->
       <div class="gi rv d2" onclick="openLb(1)">
-        <img loading="lazy" src="https://digitainvite.id/wp-content/uploads/2026/09/uw20260918325_70b3fc2e8f0d3dffde1485895f8ad78d-4UaFVH-scaled.webp" alt="Foto Pernikahan 2">
+        <img loading="lazy" src="https://digitainvite.id/wp-content/uploads/2026/09/uw20260918325_022bc102c97cc137d414d55a43b276ae-uS26gB-scaled.webp" alt="Resepsi Pernikahan">
         <div class="gi-ov">🔍</div>
       </div>
       <div class="gi rv d3" onclick="openLb(2)">
-        <img loading="lazy" src="https://digitainvite.id/wp-content/uploads/2026/09/uw20260918325_f5d0f59f264a8aa09675a4d5a86cddde-RwrrOM-scaled.webp" alt="Foto Pernikahan 3">
+        <img loading="lazy" src="https://digitainvite.id/wp-content/uploads/2026/09/uw20260918325_70b3fc2e8f0d3dffde1485895f8ad78d-4UaFVH-scaled.webp" alt="Momen Pernikahan">
         <div class="gi-ov">🔍</div>
       </div>
       <div class="gi rv d1" onclick="openLb(3)">
-        <img loading="lazy" src="https://digitainvite.id/wp-content/uploads/2026/09/uw20260918325_8a043688f4da3ba963b936e124334e17-LuroLY-scaled.webp" alt="Foto Pernikahan 4">
+        <img loading="lazy" src="https://digitainvite.id/wp-content/uploads/2026/09/uw20260918325_f5d0f59f264a8aa09675a4d5a86cddde-RwrrOM-scaled.webp" alt="Momen Pernikahan">
         <div class="gi-ov">🔍</div>
       </div>
       <div class="gi rv d2" onclick="openLb(4)">
-        <img loading="lazy" src="https://digitainvite.id/wp-content/uploads/2026/10/uw20260918325_66523c6b5538fe23f3a9c5f624b0fb02-pT8zLO-scaled.webp" alt="Foto Keluarga">
+        <img loading="lazy" src="https://digitainvite.id/wp-content/uploads/2026/09/uw20260918325_8a043688f4da3ba963b936e124334e17-LuroLY-scaled.webp" alt="Momen Pernikahan">
         <div class="gi-ov">🔍</div>
       </div>
       <div class="gi rv d3" onclick="openLb(5)">
-        <img loading="lazy" src="https://digitainvite.id/wp-content/uploads/2026/09/uw20260918325_ab4135b8bb25a1167d8d86b9b7a1ba72-3NfQI8-scaled.webp" alt="Foto Mempelai Wanita">
-        <div class="gi-ov">🔍</div>
-      </div>
-      <div class="gi rv d4" onclick="openLb(6)">
-        <img loading="lazy" style="object-fit: cover; object-position: center 28%;" src="https://digitainvite.id/wp-content/uploads/2026/09/uw20260918325_bd781a647f8ef2d5c15d6774b9dbb10f-eWZhY0-scaled.webp" alt="Foto Mempelai Pria">
+        <img loading="lazy" src="https://digitainvite.id/wp-content/uploads/2026/10/uw20260918325_66523c6b5538fe23f3a9c5f624b0fb02-pT8zLO-scaled.webp" alt="Momen Resepsi">
         <div class="gi-ov">🔍</div>
       </div>
     </div>
@@ -1559,13 +1949,12 @@ if (window.matchMedia('(hover: hover)').matches) {
    LIGHTBOX
 ═══════════════════════════════════════════════ */
 const IMGS = [
+  'foto-keluarga.jpg',
   'https://digitainvite.id/wp-content/uploads/2026/09/uw20260918325_022bc102c97cc137d414d55a43b276ae-uS26gB-scaled.webp',
   'https://digitainvite.id/wp-content/uploads/2026/09/uw20260918325_70b3fc2e8f0d3dffde1485895f8ad78d-4UaFVH-scaled.webp',
   'https://digitainvite.id/wp-content/uploads/2026/09/uw20260918325_f5d0f59f264a8aa09675a4d5a86cddde-RwrrOM-scaled.webp',
   'https://digitainvite.id/wp-content/uploads/2026/09/uw20260918325_8a043688f4da3ba963b936e124334e17-LuroLY-scaled.webp',
-  'https://digitainvite.id/wp-content/uploads/2026/10/uw20260918325_66523c6b5538fe23f3a9c5f624b0fb02-pT8zLO-scaled.webp',
-  'https://digitainvite.id/wp-content/uploads/2026/09/uw20260918325_ab4135b8bb25a1167d8d86b9b7a1ba72-3NfQI8-scaled.webp',
-  'https://digitainvite.id/wp-content/uploads/2026/09/uw20260918325_bd781a647f8ef2d5c15d6774b9dbb10f-eWZhY0-scaled.webp'
+  'https://digitainvite.id/wp-content/uploads/2026/10/uw20260918325_66523c6b5538fe23f3a9c5f624b0fb02-pT8zLO-scaled.webp'
 ];
 let curLb = 0;
 const lbImg = document.getElementById('lb-img');
